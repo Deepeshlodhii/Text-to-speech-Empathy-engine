@@ -1,0 +1,8 @@
+## pyttsx3
+nltk
+fastapi
+requests
+uvicorn
+python-multipart
+python-dotenv
+streamlit
