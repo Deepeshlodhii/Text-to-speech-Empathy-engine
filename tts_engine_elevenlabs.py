@@ -26,7 +26,11 @@ def generate_speech(text, emotion, intensity, filename="output/speech.wav"):
     }
 
     settings = emotion_settings.get(emotion, emotion_settings["neutral"])
+        base = settings
 
+        dynamic_settings = {
+            "stability": min(max(base["stability"] + (intensity * 0.2), 0), 1),
+            "similarity_boost": base["similarity_boost"]
     payload = {
         "text": text,
         "voice_settings": settings
@@ -51,3 +55,4 @@ def generate_speech(text, emotion, intensity, filename="output/speech.wav"):
         f.write(response.content)
 
     return filename
+
